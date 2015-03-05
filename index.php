@@ -2,39 +2,79 @@
 	<head>
 		<title>Index</title>
 		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/style_nav.css">
 		<script>
+		function validate(){
+		var obj=document.getElementById("x");
+		var str=obj.value;
+		if (str.length<=0) {
+			obj.style.backgroundColor("red");
+			return false;
+		};
+		else{
+			obj.style.backgroundColor("green");
+			return false;
+		};
+
+	}
 			
 		</script>
+		<style type="text/css">
+	
+		</style>
 	</head>
 	<body>
-		<table>
-			<tr>
-				<td colspan="2" id="pageheader">
-					Application Header
+		<div id= "container">
+		<table border="1">
+			<!-- <tr> -->
+			<tr colspan="2" id="pageheader">
+			<td>
+			<span id="img_position"></span><img src="images/logo.jpg"></td>
+				<td id="header_text">
+					<h2>Ashesi Inventory</h2>
 				</td>
-			</tr>
+				</tr>
+			<!-- </tr> -->
 			<tr>
 				<td id="mainnav">
-					<div class="menuitem">menu 1</div>
-					<div class="menuitem">menu 2</div>
-					<div class="menuitem">menu 3</div>
-					<div class="menuitem">menu 4</div>
+					<div id="cssmenu">
+					<ul>
+						<li><a href='#'><span>Home</span></a></li>
+						<li class='active has-sub'><a href="#" ><span>Inventory</span></a></li>
+							<ul>
+								<li class='has-sub'><a href="#" ><span>Add</span></a></li>
+								<ul>
+					               <li><a href='#'><span>Sub Product</span></a></li>
+					               <li class='last'><a href='#'><span>Sub Product</span></a></li>
+					            </ul>
+								<li class='has-sub'><a href="#" ><span>View</span></a></li>
+
+							</ul>
+						<li class=''><a href="#" ><span>Manufacturer</span></a></li>
+							<ul>
+								<li class='has-sub'><a href="#" ><span>Add</span></a></li>
+								<li class='has-sub'><a href="#" ><span>View</span></a></li>
+
+							</ul>
+						<li class=''><a href="#" ><span>Lecture hall</span></a></li>
+						<ul>
+								<li class='has-sub'><a href="#" ><span>Add</span></a></li>
+								<li class='has-sub'><a href="#" ><span>View</span></a></li>
+
+							</ul>
+					</div>
+					</ul>
+					</div>
 				</td>
 				<td id="content">
-					<div id="divPageMenu">
-						<span class="menuitem" >page menu 1</span>
-						<span class="menuitem" >page menu 2</span>
-						<span class="menuitem" >page menu 3</span>
-						<input type="text" id="txtSearch" />
-						<span class="menuitem">search</span>		
-					</div>
-					<div id="divStatus" class="status">
-						status message
-					</div>
+					
+						<div id= "my_search">
+							<input type="text" id="txtSearch" placeholder="Search" />
+							<span class="menuitem"><button>search</button></span>
+						</div>
+					
 					<div id="divContent">
-						Content space
-						<span class="clickspot">click here </span>
-						<table id="tableExample" class="reportTable" width="100%">
+						 <table id="tableExample" class="reportTable" width="100%">
 							<tr class="header">
 								<td>column1</td>
 								<td>column2</td>
@@ -56,6 +96,7 @@
 					</div>
 				</td>
 			</tr>
-		</table>
+		</table> 
+		</div>
 	</body>
 </html>	

@@ -11,11 +11,11 @@
 	background-color:Yellow
 }
 
-.menuitem {
+/*.menuitem {
 	text-decoration:underline;
 	color:blue;
 	cursor:hand
-}
+}*/
 .menuitem:hover{
 	text-decoration:underline;
 	cursor:hand;
@@ -26,8 +26,15 @@
 #pageheader
 {
     height: 1in;
-    background-color: #FFCC66;
+    background-color: #AD3333;
     font-size: large;
+    border: 5px solid black;
+    padding: 20px;
+}
+#pageheader .img_position{
+    text-align: left;
+}
+#header_text{
     text-align: center;
 }
 
@@ -68,7 +75,7 @@
 
 .reportTable tr:hover
 {
-    background-color:Yellow
+    background-color:#C67070;
 }
 
 .tableForm .label
@@ -110,4 +117,17 @@
     position: absolute;
     display:none;
     width: auto;
+}
+#container{
+    width:  80%;
+    text-align: center;
+    margin: 0 auto;
+}
+#my_search{
+   /*position: fixed;
+    top: 100px;
+    right: 130px;
+    color: red;*/
+    /*position:absolute; 
+    left:-500px;*/
 }
