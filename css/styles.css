@@ -101,9 +101,9 @@
 #cssmenu > ul > li > a:hover {
   color: #ffffff;
 }
-#cssmenu > ul > li.active a {
+/*#cssmenu > ul > li.active a {
   background: #1b9bff;
-}
+}*/
 #cssmenu > ul > li a:hover,
 #cssmenu > ul > li:hover a {
   background: #1b9bff;
