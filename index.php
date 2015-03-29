@@ -3,6 +3,8 @@
         <title>Index</title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/styles.css">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
         <script>
             function validate() {
                 var obj = document.getElementById("x");
@@ -11,12 +13,12 @@
                     obj.style.backgroundColor("red");
                     return false;
                 }
-                ;
+                // ;
                 else{
                     obj.style.backgroundColor("green");
                     return false;
                 }
-                ;
+                // ;
 
             }
 
@@ -41,32 +43,29 @@
                 <tr>
                     <td id="mainnav">
           <div id='cssmenu'>
-<ul>
-   <li><a href='#'><span>Home</span></a></li>
-   <li class='active has-sub'><a href='#'><span>Inventory</span></a>
-      <ul>
-         <li class=''><a href='#'><span>Add</span></a>
-<!--            <ul>
-               <li><a href='#'><span>Sub Product</span></a></li>
-               <li class='last'><a href='#'><span>Sub Product</span></a></li>
-            </ul>-->
-         </li>
-         <li class=''><a href='#'><span>View</span></a>
-<!--            <ul>
-               <li><a href='#'><span>Sub Product</span></a></li>
-               <li class='last'><a href='#'><span>Sub Product</span></a></li>
-            </ul>-->
-         </li>
-      </ul>
-   </li>
-   <li class='has-sub'><a href='#'><span>Lecturer</span></a>
-    <ul>
-        <li><a href='#'><span>Add</span></a></li>
-        <li class='last'><a href='#'><span>View</span></a></li>
-    </ul>
-       </li>
-   <li class='last'><a href='#'><span>Manufacturer</span></a></li>
-</ul>
+            <ul>
+               <li><a href='index.php'><span>Home</span></a></li>
+               <li class='active has-sub'><a><span>Inventory</span></a>
+                  <ul>
+                     <li class=''><a href='pages/page_2.php'><span>Add</span></a>
+                     </li>
+                     <li class=''><a href='pages/page_3.php'><span>View</span></a>
+                     </li>
+                  </ul>
+               </li>
+               <li class='has-sub'><a><span>Lecturer</span></a>
+                <ul>
+                    <li><a href='pages/add_hall.php'><span>Add</span></a></li>
+                    <li class='last'><a href='pages/view_hall.php'><span>View</span></a></li>
+                </ul>
+                   </li>
+               <li class='has-sub'><a href='#'><span>Manufacturer</span></a>
+                <ul>
+                    <li><a href='#page6'><span>Add</span></a></li>
+                    <li class='last'><a href='#page7'><span>View</span></a></li>
+                </ul>
+               </li>
+            </ul>
 </div>
                     </td>
                     <td id="content">
@@ -77,26 +76,44 @@
                         </div>
 
                         <div id="divContent">
-                            <table id="tableExample" class="reportTable" width="100%">
-                                <tr class="header">
-                                    <td>column1</td>
-                                    <td>column2</td>
-                                    <td>column3</td>
-                                    <td>column4</td>
-                                </tr>
-                                <tr class="row1">
-                                    <td>data example</td>
-                                    <td>123</td>
-                                    <td>01/01/2014</td>
-                                    <td>data</td>
-                                </tr>
-                                <tr class="row2">
-                                    <td>data example</td>
-                                    <td>123</td>
-                                    <td>01/01/2014</td>
-                                    <td>data</td>
-                                </tr>
-                            </table>
+                           
+                            <?php
+                            include_once("item.php");
+                            $obj2= new items();
+                            // print "asdfasdf";
+                            
+                            $obj2->view_items();
+
+                            echo '<table border=1 align= "center" width="100%">';
+                            $style="";
+                            $count=0;
+                            echo "<tr style='background-color:blue;color:white; text-align:center'>
+                                <td>Item number</td><td>barcode</td><td>name</td><td>manufacturer</td><td> Price</td>
+                                <td>date bought</td><td>repair date</td><td>condition</td><td>location</td><td>department</td></tr>";
+                            while ($row= $obj2->fetch()) {
+                                if($count%2==0){
+                                $style="style='background-color: #C2FFFF'"; 
+                                }
+                                else{
+                                    $style="";
+                                }
+                                $count+=1;
+                                echo "<tr $style>";
+                                echo "<td>{$row["item_number"]}</td>";
+                                echo "<td>{$row["barcode_number"]}</td>";
+                                echo "<td>{$row["item_name"]}</td>";
+                                echo "<td>{$row["manufacturer"]}</td>";
+                                echo "<td>{$row["price"]}</td>";
+                                echo "<td>{$row["date_bought"]}</td>";
+                                echo "<td>{$row["last_repair_date"]}</td>";
+                                echo "<td>{$row["conditions"]}</td>";
+                                echo "<td>{$row["location"]}</td>";
+                                echo "<td>{$row["department"]}</td>";
+                                echo"</tr>";
+                            }
+                            echo "</table></br></br>";
+                            ?>
+                            
                         </div>
                     </td>
                 </tr>
