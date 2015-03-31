@@ -1,4 +1,6 @@
-
+<?php
+require("check.php");
+?>
 <html>
     <head>
         <title>Add LH</title>
@@ -73,10 +75,10 @@
                     <li class='last'><a href='view_hall.php'><span>View</span></a></li>
                 </ul>
                    </li>
-               <li class='has-sub'><a href='#'><span>Manufacturer</span></a>
+               <li class='has-sub'><a><span>Manufacturer</span></a>
                 <ul>
-                    <li><a href='#page6'><span>Add</span></a></li>
-                    <li class='last'><a href='#page7'><span>View</span></a></li>
+                    <li><a href='add_manufacturer.php'><span>Add</span></a></li>
+                    <li class='last'><a href='view_manufacturer.php'><span>View</span></a></li>
                 </ul>
                </li>
             </ul>
@@ -90,14 +92,14 @@
                         </div>
 
                         <div id="divContent">
-                        	  <form action ="add_hall.php"method="POST" >
-								<div>Hall number:</br>
-									<input type= "text" name="hall_no" size="30"></div>
-								<div>Hall name:</br>
-									<input type= "text" name="hall_name" size="30"></div>
-									
-									<div><button name="btn">Save</button></div>
-								</form>
+                        	 <form action ="add_hall.php"method="POST" >
+            								<div>Hall number:</br>
+            									<input type= "text" name="hall_no" size="30"></div>
+            								<div>Hall name:</br>
+            									<input type= "text" name="hall_name" size="30"></div>
+            									
+            									<div><button name="btn">Save</button></div>
+								      </form>
 								<?php
 								if (isset($_REQUEST['hall_no'])) {
                   $no=$_REQUEST['hall_no'];

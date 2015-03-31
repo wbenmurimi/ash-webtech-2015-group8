@@ -1,4 +1,7 @@
 <?php
+require("check.php");
+?>
+<?php
 	
 	include_once("item.php");
 	$obj= new items();
@@ -29,8 +32,8 @@
 		echo "<td>{$row["conditions"]}</td>";
 		echo "<td>{$row["location"]}</td>";
 		echo "<td>{$row["department"]}</td>";
-		echo "<td><a href='update.php?id={$row["item_number"]}'>edit</a></td>";
-		echo "<td><a href='delete.php?id={$row["item_number"]}'>delete</a></td>";
+		echo "<td><a href='update.php?id={$row["item_number"]}'>EDIT</a></td>";
+		echo "<td><a href='delete.php?id={$row["item_number"]}'>DELETE</a></td>";
 		echo"</tr>";
 	}
 	echo "</table></br></br>";

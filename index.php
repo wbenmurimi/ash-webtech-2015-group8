@@ -1,3 +1,6 @@
+<?php
+require("pages/check.php");
+?>
 <html>
     <head>
         <title>Index</title>
@@ -59,10 +62,10 @@
                     <li class='last'><a href='pages/view_hall.php'><span>View</span></a></li>
                 </ul>
                    </li>
-               <li class='has-sub'><a href='#'><span>Manufacturer</span></a>
+               <li class='has-sub'><a><span>Manufacturer</span></a>
                 <ul>
-                    <li><a href='#page6'><span>Add</span></a></li>
-                    <li class='last'><a href='#page7'><span>View</span></a></li>
+                    <li><a href='pages/add_manufacturer.php'><span>Add</span></a></li>
+                    <li class='last'><a href='pages/view_manufacturer.php'><span>View</span></a></li>
                 </ul>
                </li>
             </ul>
@@ -73,6 +76,7 @@
                         <div id= "my_search">
                             <input type="text" id="txtSearch" placeholder="Search" />
                             <span class="menuitem"><button>search</button></span>
+                            <a href="pages/logout.php"><button>Logout</button></a>
                         </div>
 
                         <div id="divContent">

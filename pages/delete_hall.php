@@ -1,4 +1,7 @@
 <?php
+require("check.php");
+?>
+<?php
 if (isset($_REQUEST['id'])) {
   $no=$_REQUEST['id'];
 	include_once("lectureHalls.php");

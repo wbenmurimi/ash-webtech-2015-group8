@@ -1,4 +1,6 @@
-
+<?php
+require("check.php");
+?>
 <html>
     <head>
         <title>Add item</title>
@@ -39,7 +41,19 @@
     </script>
         
         <style type="text/css">
-
+        #divContent{
+          margin-left: 150px;
+        }
+        form button {
+        background-color: #8D1919;
+        border: 1px solid rgba(0,0,0,.1);
+        color: rgb(255,255,255);
+        font-family: 'Varela Round', sans-serif;
+        font-size: .85em;
+        padding: .55em .9em;
+        border-radius: 5px;
+        transition: all 400ms ease; 
+      }
         </style>
     </head>
     <body>
@@ -73,10 +87,10 @@
                     <li class='last'><a href='view_hall.php'><span>View</span></a></li>
                 </ul>
                    </li>
-               <li class='has-sub'><a href='#'><span>Manufacturer</span></a>
+               <li class='has-sub'><a><span>Manufacturer</span></a>
                 <ul>
-                    <li><a href='#page6'><span>Add</span></a></li>
-                    <li class='last'><a href='#page7'><span>View</span></a></li>
+                    <li><a href='add_manufacturer.php'><span>Add</span></a></li>
+                    <li class='last'><a href='view_manufacturer.php'><span>View</span></a></li>
                 </ul>
                </li>
             </ul>
@@ -91,48 +105,48 @@
 
                         <div id="divContent">
                         	  <form action ="page_2.php"method="POST" >
-								<div>Item number:</br>
-									<input type= "text" name="item_no" size="30"></div>
-								<div>barcode number:</br>
-									<input type= "text" name="barcode_no" size="30"></div>
-								<div>Item name:</br>
-									<input type= "text" name="item_name" size="30"></div>
-									<div>Manufacturer:</div>
-									<div>
-										<select name="manu">
-											<option value="0" >---select manufacturer</option>
-											<option value="Sonny" >Sonny</option>
-											<option value="Samsung" >Samsung</option>
-											<option value="Lenovo" >Lenovo</option>
-											<option value="HP" >HP</option>
-										</select>
-									</div>
-									<div>Price:</br>
-										<input type= "text" name="price" size="30"></div>
-									<div>Date bought:</br>
-										<input id="datepicker" name="date_b" size="30"></div>
-									<div>Last repair date:</br>
-										<input id="datepicker2" name="repair_d" size="30"></div>
-									<div>Condition:</br>
-										<input type= "text" name="condiction" size="30"></div>
-									<div>Location:</br>
-										<input type= "text" name="location" size="30"></div>
-									<div>Department:</br>
-										<input type= "text" name="dpt" size="30"></div>
-									</br>
-									<div><button name="btn">Save</button></div>
-								</form>
-								<?php
-								
-									include_once("item.php");
-									$obj=new items();
+            								<div>Item number:</br>
+            									<input type= "text" name="item_no" size="40"></div>
+            								<div>barcode number:</br>
+            									<input type= "text" name="barcode_no" size="40"></div>
+            								<div>Item name:</br>
+            									<input type= "text" name="item_name" size="40"></div>
+            									<div>Manufacturer:</div>
+            									<div>
+            										<select name="manu">
+            											<option value="0" >---select manufacturer</option>
+            											<option value="Sonny" >Sonny</option>
+            											<option value="Samsung" >Samsung</option>
+            											<option value="Lenovo" >Lenovo</option>
+            											<option value="HP" >HP</option>
+            										</select>
+            									</div>
+            									<div>Price:</br>
+            										<input type= "text" name="price" size="40"></div>
+            									<div>Date bought:</br>
+            										<input id="datepicker" name="date_b" size="40"></div>
+            									<div>Last repair date:</br>
+            										<input id="datepicker2" name="repair_d" size="40"></div>
+            									<div>Condition:</br>
+            										<input type= "text" name="condiction" size="40"></div>
+            									<div>Location:</br>
+            										<input type= "text" name="location" size="40"></div>
+            									<div>Department:</br>
+            										<input type= "text" name="dpt" size="40"></div>
+            									</br>
+            									<div><button name="btn">Save</button></div>
+            								</form>
+            								<?php
+            								
+            									include_once("item.php");
+            									$obj=new items();
 
-									$obj->add_items();
-									// header("location:../index.php");
-									
-								
-								?>
-                        </div>
+            									$obj->add_items();
+            									// header("location:../index.php");
+            									
+            								
+            								?>    
+                                    </div>
                     </td>
                 </tr>
             </table> 

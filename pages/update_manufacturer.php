@@ -75,10 +75,10 @@ require("check.php");
                     <li class='last'><a href='pages/page_5.php'><span>View</span></a></li>
                 </ul>
                    </li>
-               <li class='last'><a href='#'><span>Manufacturer</span></a>
+               <li class='last'><a ><span>Manufacturer</span></a>
                 <ul>
-                    <li><a href='#page6'><span>Add</span></a></li>
-                    <li class='last'><a href='#page7'><span>View</span></a></li>
+                    <li><a href='add_manufacturer.php'><span>Add</span></a></li>
+                    <li class='last'><a href='view_manufacturer.php'><span>View</span></a></li>
                 </ul>
                </li>
             </ul>
@@ -94,58 +94,29 @@ require("check.php");
                         <div id="divContent">
                         	  <?php
 								if (isset($_REQUEST['id'])) {
-									include_once("item.php");
-								
-									$obj=new items();
-									$obj->view_item();
+									$no=$_REQUEST['id'];
+                  include_once("manufacturer.php");
+                   $obj=new manufacturer();
+
+                  $obj->view_one_manufacturer($no);
 
 							while ($row= $obj->fetch()) {
-								$item_no=$row['item_number'];
-								$barcode=$row['barcode_number'];
-								$name=$row['item_name'];
-								$manufacturer=$row['manufacturer'];
-								$price=$row['price'];
-								$date_bought=$row['date_bought'];
-								$repair_date=$row['last_repair_date'];
-								$condiction=$row['conditions'];
-								$location=$row['location'];
-								$department=$row['department'];
+								$man_no=$row['manufacturer_id'];
+								$name=$row['manufacturer_name'];
+                $code=$row['code_no'];
 								
 							}
 							}
 								?>
-									<form action ="updated.php"method="POST" >
-								<div>Item number:</br>
-									<input type= "text" name="item_no" size="30" value= <?php echo $item_no;?>></div>
-								<div>barcode number:</br>
-									<input type= "text" name="barcode_no" size="30" value= <?php echo $barcode;?>></div>
-								<div>Item name:</br>
-									<input type= "text" name="item_name" size="30" value= <?php echo $name;?>></div>
-									<div>Manufacturer:</div>
-									<div>
-										<select name="manu">
-											<option><?php echo $manufacturer;?></option>
-											<option value="0" >---select manufacturer</option>
-											<option value="Sonny" >Sonny</option>
-											<option value="Samsung" >Samsung</option>
-											<option value="Lenovo" >Lenovo</option>
-											<option value="HP" >HP</option>
-										</select>
-									</div>
-									<div>Price:</br>
-										<input type= "text" name="price" size="30" value=<?php echo $price;?>></div>
-									<div>Date bought:</br>
-										<input id="datepicker" name="date_b" size="30" value= <?php echo $date_bought;?>></div>
-									<div>Last repair date:</br>
-										<input id="datepicker2" name="repair_d" size="30" value= <?php echo $repair_date;?>></div>
-									<div>Condition:</br>
-										<input type= "text" name="condiction" size="30" value=<?php echo $condiction;?>></div>
-									<div>Location:</br>
-										<input type= "text" name="location" size="30" value=<?php echo $location;?>></div>
-									<div>Department:</br>
-										<input type= "text" name="dpt" size="30" value=<?php echo $department;?>></div>
-									</br>
-									<div><button name="btn">Save</button></div>
+									<form action ="updated_manufacturer.php"method="POST" >
+								<div>Manufacturer number:</br>
+									<input type= "text" name="man_no" size="30" value= <?php echo $man_no;?>></div>
+								<div>Manufacturer name:</br>
+									<input type= "text" name="man_name" size="30" value= <?php echo $name;?>></div>
+                <div>Manufacturer code:</br>
+                  <input type= "text" name="man_code" size="30" value= <?php echo $code;?>></div>
+									
+									<div><button name="btn">Save changes</button></div>
 								</form>
                         </div>
                     </td>

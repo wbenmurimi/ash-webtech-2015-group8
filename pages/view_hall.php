@@ -1,4 +1,6 @@
-
+<?php
+require("check.php");
+?>
 <html>
     <head>
         <title>Index</title>
@@ -60,10 +62,10 @@
                     <li class='last'><a href='page_5.php'><span>View</span></a></li>
                 </ul>
                    </li>
-               <li class='has-sub'><a href='#'><span>Manufacturer</span></a>
+               <li class='has-sub'><a ><span>Manufacturer</span></a>
                 <ul>
-                    <li><a href='#page6'><span>Add</span></a></li>
-                    <li class='last'><a href='#page7'><span>View</span></a></li>
+                    <li><a href='add_manufacturer.php'><span>Add</span></a></li>
+                    <li class='last'><a href='view_manufacturer.php'><span>View</span></a></li>
                 </ul>
                </li>
             </ul>
@@ -100,8 +102,8 @@
 								echo "<td>{$row["hall_number"]}</td>";
 								echo "<td>{$row["hall_name"]}</td>";
 								
-								echo "<td><a href='update_hall.php?id={$row["hall_number"]}'>edit</a></td>";
-								echo "<td><a href='delete_hall.php?id={$row["hall_number"]}'>delete</a></td>";
+								echo "<td><a href='update_hall.php?id={$row["hall_number"]}'>Edit</a></td>";
+								echo "<td><a href='delete_hall.php?id={$row["hall_number"]}'>Delete</a></td>";
 								echo"</tr>";
 							}
 							echo "</table></br></br>";

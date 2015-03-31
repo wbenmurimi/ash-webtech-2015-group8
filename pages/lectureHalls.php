@@ -38,17 +38,6 @@
 			$querry="SELECT * FROM lecture_halls WHERE hall_number=$no";
 			return $this->query($querry);
 		}
-		
-	// function searchLecHalls (){
-	// $str_query = " SELECT * FROM lecture_halls WHERE hall_name like '%$search_text%' "
-	// $this->query($str_query);
-	// $result = $this->fetch();
-	// $count = $this->get_num_rows();
-	// for ($i=0; $i<$count; i++ ){
-	// 	echo "<tr><td>{$row ['hall_name']}</td><td> {$row['hall_number']} </td></tr>";
-	// 	echo "<br>";
-	// }
-	// }
 }
 	
 	?>

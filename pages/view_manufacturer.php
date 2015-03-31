@@ -3,13 +3,10 @@ require("check.php");
 ?>
 <html>
     <head>
-        <title>Update</title>
+        <title>Index</title>
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/styles.css">
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
         <script type="text/javascript" src="script.js"></script>
         <script>
             function validate() {
@@ -29,16 +26,6 @@ require("check.php");
             }
 
         </script>
-        <script>
-  		$(document).ready(function() {
-    		$("#datepicker").datepicker();
- 		 });
-    </script>
-    <script>
-  		$(document).ready(function() {
-    		$("#datepicker2").datepicker();
- 		 });
-    </script>
         
         <style type="text/css">
 
@@ -71,11 +58,11 @@ require("check.php");
                </li>
                <li class='has-sub'><a><span>Lecturer</span></a>
                 <ul>
-                    <li><a href='pages/page_4.php'><span>Add</span></a></li>
-                    <li class='last'><a href='pages/page_5.php'><span>View</span></a></li>
+                    <li><a href='add_hall.php'><span>Add</span></a></li>
+                    <li class='last'><a href='page_5.php'><span>View</span></a></li>
                 </ul>
                    </li>
-               <li class='last'><a ><span>Manufacturer</span></a>
+               <li class='has-sub'><a><span>Manufacturer</span></a>
                 <ul>
                     <li><a href='add_manufacturer.php'><span>Add</span></a></li>
                     <li class='last'><a href='view_manufacturer.php'><span>View</span></a></li>
@@ -92,29 +79,36 @@ require("check.php");
                         </div>
 
                         <div id="divContent">
-                        	  <?php
-								if (isset($_REQUEST['id'])) {
-									$no=$_REQUEST['id'];
-                  include_once("lectureHalls.php");
-                  $obj=new lectureHalls();
+                        	<?php
+                        	include_once("manufacturer.php");
+                            $obj2=new manufacturer();
 
-                  $obj->view_one_hall($no);
+                            $obj2->view_manufacturer();
 
-							while ($row= $obj->fetch()) {
-								$hall_no=$row['hall_number'];
-								$name=$row['hall_name'];
-								
+							echo '<table border=1 align= "center" width="100%">';
+							$style="";
+							$count=0;
+							echo "<tr style='background-color:blue;color:white; text-align:center'>
+								<td>Manufacturer Number</td><td> Manufacturer Name</td><td> Manufacturer Code</td><td>Edit</td><td>Delete</td></tr>";
+							while ($row= $obj2->fetch()) {
+								if($count%2==0){
+								$style="style='background-color: #C2FFFF'";	
+								}
+								else{
+									$style="";
+								}
+								$count+=1;
+								echo "<tr $style>";
+								echo "<td>{$row["manufacturer_id"]}</td>";
+								echo "<td>{$row["manufacturer_name"]}</td>";
+								echo "<td>{$row["code_no"]}</td>";
+								echo "<td><a href='update_manufacturer.php?id={$row["manufacturer_id"]}'>Edit</a></td>";
+								echo "<td><a href='delete_manufacturer.php?id={$row["manufacturer_id"]}'>Delete</a></td>";
+								echo"</tr>";
 							}
-							}
-								?>
-									<form action ="updated_hall.php"method="POST" >
-								<div>Hall number:</br>
-									<input type= "text" name="hall_no" size="30" value= <?php echo $hall_no;?>></div>
-								<div>Hall name:</br>
-									<input type= "text" name="hall_name" size="30" value= <?php echo $name;?>></div>
-									
-									<div><button name="btn">Save changes</button></div>
-								</form>
+							echo "</table></br></br>";
+							?>
+						                            
                         </div>
                     </td>
                 </tr>
@@ -122,6 +116,7 @@ require("check.php");
         </div>
         
     </body>
+        </head>
 </html>	
 	
 	
