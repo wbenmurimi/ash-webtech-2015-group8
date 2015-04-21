@@ -1,3 +1,10 @@
+body {
+    background-color: #771212;  
+    padding: 10px;   
+}
+
+
+
 .clickspot{
 	text-decoration:underline;
 	color:blue;
@@ -31,6 +38,89 @@
     border: 5px solid black;
     padding: 20px;
 }
+#ashesi{
+    left:300px;
+    font-family: Verdana, Geneva, sans-serif;
+    color: black;
+    text-align:center;
+}
+#ashesiDiv{
+    
+}
+#mainContainer{
+   margin: auto;
+   position: absolute;
+   top: 0px; bottom: 0px; left: 0px; right: 0px;
+   width: 90%;
+   height: 95%; 
+   background-color: #1b1a18 ;
+   border-radius: 10px;
+   display: block;
+   overflow: hidden;
+   box-shadow: 0 0 10px rgba(0,0,0,0.6);
+   -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+   -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+   -o-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+}
+
+#topHeader{
+   margin-top: 0;
+   position: absolute;
+   top: 0px; bottom: 0px; left: 0px; right: 0px;
+   width: 1500px;
+   height: 100px ; 
+   background-color: white ; 
+   border-radius: 0px;
+   //border-radius: 10px;
+}
+
+#sideBar{
+/*   margin: auto;
+   position: relative;*/
+   //left: 70px;
+   top: 0px; bottom: 0px; left: -600px; right: 0px;
+   width: 200px;
+   height: 1000px ; 
+   background-color: #797875 ; 
+   border-radius: 0px; 
+}
+
+#topBar{
+   /**margin: auto;**/
+   position: absolute;
+   left: 200px;
+   top: 100px; 
+   width: 1500px;
+   height: 50px ; 
+   background-color: grey ; 
+   border-radius: 0px; 
+}
+
+#statusBar{
+   position: absolute;
+   left: 200px;
+   top: 150px; 
+   width: 1030px;
+   height: 15px ; 
+   background-color: #866e19 ; 
+   border-radius: 0px;
+}
+
+#infoBar{
+   /*top: 0px; bottom: 0px; left: 0px; right: 150px;*/
+   /**margin: auto;**/
+   position: absolute;
+   left: 200px;
+   top: 165px;
+   padding: 25px;
+   width: 1030px;
+   height: 480px ; 
+   background-color: #E4DAD9; 
+   border-radius: 0px;  
+}
+
+
+
 #pageheader .img_position{
     text-align: left;
 }
@@ -39,8 +129,9 @@
 }
 
 #mainnav{
+    position:absolute;
 	width:2in;
-	vertical-align:top
+	top:100px;
 }
 
 
@@ -119,10 +210,16 @@
     width: auto;
 }
 #container{
-    width:  95%;
-    text-align: center;
+    position: relative;
+    min-height:100%;
+    height: 100%; 
+    width: 100%;
+    //padding: 
     margin: 0 auto;
 }
+
+
+
 #my_search{
    /*position: fixed;
     top: 100px;

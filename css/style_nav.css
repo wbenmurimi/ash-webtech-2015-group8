@@ -23,7 +23,7 @@
 #cssmenu ul li {
   float: left;
   min-height: 1px;
-  line-height: 1em;
+  line-height: 5em;
   vertical-align: middle;
   position: relative;
 }
@@ -69,8 +69,9 @@
   width: 200px;
   background: #333333;
   font-family: 'Oxygen Mono', Tahoma, Arial, sans-serif;
+  padding-left:20px;
   zoom: 1;
-  font-size: 12px;
+  font-size: 10px;
 }
 #cssmenu:before {
   content: '';
@@ -86,7 +87,7 @@
   padding: 15px 20px;
   color: #ffffff;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: lowercase;
 }
 #cssmenu > ul {
   width: 200px;
@@ -102,11 +103,11 @@
   color: #ffffff;
 }
 #cssmenu > ul > li.active a {
-  background: #1b9bff;
+  background: #660000;
 }
 #cssmenu > ul > li a:hover,
 #cssmenu > ul > li:hover a {
-  background: #1b9bff;
+  background: #660000;
 }
 #cssmenu li {
   position: relative;
@@ -152,7 +153,7 @@
   color: #ffffff;
 }
 #cssmenu.align-right > ul > li > a {
-  border-left: 4px solid #1b9bff;
+  border-left: 4px solid #660000;
   border-right: none;
 }
 #cssmenu.align-right {

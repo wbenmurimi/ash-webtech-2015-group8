@@ -106,7 +106,7 @@
 }*/
 #cssmenu > ul > li a:hover,
 #cssmenu > ul > li:hover a {
-  background: #1b9bff;
+  background: #330000;
 }
 #cssmenu li {
   position: relative;
@@ -135,7 +135,7 @@
   border-radius: 0 3px 3px 0;
 }
 #cssmenu ul ul {
-  border: 1px solid #0082e7;
+  border: 1px solid #330000;
 }
 #cssmenu ul ul a {
   font-size: 12px;
@@ -152,7 +152,7 @@
   color: #ffffff;
 }
 #cssmenu.align-right > ul > li > a {
-  border-left: 4px solid #1b9bff;
+  border-left: 4px solid #330000;
   border-right: none;
 }
 #cssmenu.align-right {
