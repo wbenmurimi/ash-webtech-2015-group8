@@ -21,25 +21,25 @@ Class items extends adb{
 	adds  item to the database
 	*/
 	function add_items(){
-		if (isset($_REQUEST['item_no'])) {
-		$item_no=$_REQUEST['item_no'];
-		$barcode=$_REQUEST['barcode_no'];
-		$name=$_REQUEST['item_name'];
-		$manufacturer=$_REQUEST['manu'];
+		if (isset($_REQUEST['item-code'])) {
+		$item_no=$_REQUEST['item-code'];
+		$barcode=$_REQUEST['bar-code'];
+		$name=$_REQUEST['item-nm'];
+		$manufacturer=$_REQUEST['manu-nm'];
 		$price=$_REQUEST['price'];
-		$date_bought=$_REQUEST['date_b'];
-		$repair_date=$_REQUEST['repair_d'];
-		$condiction=$_REQUEST['condiction'];
+		$date_bought=$_REQUEST['date-bought'];
+		$repair_date=$_REQUEST['repair-date'];
+		$condition=$_REQUEST['condition'];
 		$location=$_REQUEST['location'];
-		$department=$_REQUEST['dpt'];
+		$department=$_REQUEST['department'];
 
 
 		$querry="INSERT INTO `items` (`item_number`, `barcode_number`, 
 			`item_name`, `manufacturer`, `price`, `date_bought`, `last_repair_date`,
 			 `conditions`, `location`, `department`) 
 			VALUES ('$item_no', '$barcode', '$name', '$manufacturer', '$price', '$date_bought', 
-			'$repair_date', '$condiction', '$location', '$department');";
-		echo "item added";
+			'$repair_date', '$condition', '$location', '$department');";
+		
 
 		return $this->query($querry);
 	}
