@@ -54,7 +54,7 @@ body {
    width: 90%;
    height: 95%; 
    background-color: #1b1a18 ;
-   border-radius: 10px;
+   border-radius: 20px;
    display: block;
    /*overflow: hidden;*/
    box-shadow: 0 0 10px rgba(0,0,0,0.6);
@@ -67,11 +67,11 @@ body {
    margin-top: 0;
    position: absolute;
    top: 0px; bottom: 0px; left: 0px; right: 0px;
-   width: 1500px;
+   width: 1227px;
    height: 100px ; 
    background-color: white ; 
    border-radius: 0px;
-   //border-radius: 10px;
+   border-radius: 10px;
 }
 
 #sideBar{
@@ -83,6 +83,32 @@ body {
    height: 800px ; 
    background-color: #797875 ; 
    border-radius: 0px; 
+}
+#logout{
+  text-align: right;
+  margin-top:-20px;
+  margin-right: 30px;
+}
+
+#lbtn{
+  width: 5em;
+    height: 3em;
+    /*background-color: #EFDBCE;*/
+    background-color: #8D1919;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius:6px;
+    color: #fff;
+    font-family: 'Oswald';
+    font-size: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    border:none;
+}
+#lbtn:hover {
+    border: none;
+    background:red;
+    box-shadow: 0px 0px 1px #777;
 }
 
 #topBar{

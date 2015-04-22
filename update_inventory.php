@@ -6,7 +6,7 @@ require("pages/check.php");
 ?>
 <html>
 <head>
-  <title>Add Inventory</title>
+  <title>Update Inventory</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/styles.css">
   <!--link rel="stylesheet" href="css/style_nav.css"-->
@@ -20,7 +20,11 @@ require("pages/check.php");
   <script src="jquery-2.1.3.js"></script>
   <script>
 
-
+$(document).ready(function() {
+     $("#datepicker").datepicker({
+         format: 'yyyy-mm-dd'
+     });
+ })
   function validate() {
     var obj = document.getElementById("x");
     var str = obj.value;
@@ -99,44 +103,73 @@ require("pages/check.php");
   </div>
 </div>
 <div id="infoBar">
-  <form class="ui form" action="manuForm.php" method="POST">
+  <?php
+      if (isset($_REQUEST['id'])) {
+        include_once("pages/item.php");
+      
+        $obj=new items();
+        $obj->view_item();
+
+    while ($row= $obj->fetch()) {
+      $item_no=$row['item_number'];
+      $barcode=$row['barcode_number'];
+      $name=$row['item_name'];
+      $manufacturer=$row['manufacturer'];
+      $price=$row['price'];
+      $date_boughtt=$row['date_bought'];
+      $repair_date=$row['last_repair_date'];
+      $condiction=$row['conditions'];
+      $location=$row['location'];
+      $department=$row['department'];
+      
+    }
+    }
+      ?>
+  <form class="ui form" action="pages/updated.php" method="POST">
     <h2 class="ui dividing header"> Inventory Information Form </h2>
     <div class="field"> 
-      <label> Item Number </label> <input style="width:100%; float:left" type="text" name="item-code" placeholder="Enter item code here">
+      <label> Item Number </label> <input style="width:100%; float:left" 
+      type="text" name="item-code" placeholder="Enter item code here"value= <?php echo $item_no;?>>
     </div>
     <div class="field"> 
-      <label> Barcode Number </label> <input style="width:100%; float:left" type="text" name="bar-code" placeholder="Enter barcode here">
+      <label> Barcode Number </label> <input style="width:100%; float:left"
+       type="text" name="bar-code" placeholder="Enter barcode here"value= <?php echo $barcode;?>>
     </div>
     
     <div class="two fields">
  
       <div class="field">
         <label> Date Bought </label>
-        <input style="width:100%" type="text" name="date-bought" placeholder="Enter date bought Here">
+        <input style="width:100%" 
+        type="text" name="date-bought" placeholder="Enter date bought Here"value=<?php echo $date_boughtt;?>>
       </div>
       <div class="field"> 
         <label> Last Repair Date </label>
-        <input  style="width:100%; float:left" type="text" name="repair-date" placeholder="Enter repair date here">
+        <input  style="width:100%; float:left" type="text" 
+        name="repair-date" placeholder="Enter repair date here"value=<?php echo $repair_date;?>>
     </div>
     </div>
    <div class="two fields">
     <div class="field"> 
         <label>Price</label>
-        <input style="width:100%" float="left" type="text" name="price" placeholder="Enter price here">
+        <input style="width:100%" float="left" type="text" 
+        name="price" placeholder="Enter price here"value= <?php echo $price;?>>
       </div>
     <div class="field">
       <label> Location </label>
-      <input style="width:100%" type="text" name="location" placeholder="Enter location here">
+      <input style="width:100%" type="text" 
+      name="location" placeholder="Enter location here"value=<?php echo $location;?>>
     </div>
   </div>
   <div class="two fields">
     <div class="field"> 
       <label> Item Name </label>
-      <input style="width:100%; float:left"type="text" name="item-nm" placeholder="Enter item name here">
+      <input style="width:100%; float:left"type="text" name="item-nm" placeholder="Enter item name here"value=<?php echo $name;?>>
     </div>
     <div class="field"> 
         <label> Manufacturer Name </label>
         <select style="width:100%" type="text" name="manu-nm" >
+          <option><?php echo $manufacturer;?></option>
           <option value="0" > --select manufacturer-- </option>
           <option value="Sonny" >Sonny</option>
           <option value="Samsung" >Samsung</option>
@@ -149,6 +182,7 @@ require("pages/check.php");
     <div class="field">
       <label> Department </label>
       <select name="department"style="width:100%; float:left" >
+        <option><?php echo $department;?></option>
         <option  value=""> --Department-- </option>
         <option value="1">CS</option>
         <option value="2">MIS</option>
@@ -161,6 +195,7 @@ require("pages/check.php");
     <div class="field">
       <label> Condition </label>
       <select name="condition"style="width:100%; float:left" >
+         <option><?php echo $condiction;?></option>
         <option value=""> --Condition-- </option>
         <option value="excellent">Excellent</option>
         <option value="good">Good</option>
@@ -170,28 +205,18 @@ require("pages/check.php");
     </div> 
   </div>               
     <div class="field">
-      <input type="submit" class="ui secondary button" value="ADD">
+      <input type="submit" class="ui secondary button" value="UPDATE">
 
     </div> 
 
   </div>
 
+   
+
 </form>
-
-<?php
-include_once("pages/item.php");
-$obj=new items();
-
-
-$obj->add_items(); ?>
 
 </div>
 </div>
 </body>
-
-
-
-
-
 
 </html>

@@ -5,7 +5,7 @@
   ?>
   <html>
   <head>
-    <title>Add manufacturer</title>
+    <title>Update manufacturer</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/styles.css">
     <!--link rel="stylesheet" href="css/style_nav.css"-->
@@ -172,46 +172,48 @@
               </div>
             </div>
             <div id="infoBar">
+            <?php
+                if (isset($_REQUEST['id'])) {
+                  $no=$_REQUEST['id'];
+                  include_once("pages/manufacturer.php");
+                   $obj=new manufacturer();
+
+                  $obj->view_one_manufacturer($no);
+
+              while ($row= $obj->fetch()) {
+                $man_no=$row['manufacturer_id'];
+                $name=$row['manufacturer_name'];
+                $code=$row['code_no'];
+                
+                }
+              }
+            ?>
               <h2 class="ui dividing header"> Manufacturer Information Form </h2>
-              <form class="ui form" action="addManu.php" method="POST">
+              <form class="ui form" action="pages/updated_manufacturer.php" method="POST">
 
                 <div class="field">
                   <label>Manufacturer ID</label>
-                  <input placeholder="ID" type="text" name="manu_id">
+                  <input placeholder="ID" type="text" name="manu_id" value= <?php echo $man_no;?>>
                 </div>
 
                 <div class="field">
                   <label> Name</label>
-                  <input placeholder="Name" type="text" name="manu_name">
+                  <input placeholder="Name" type="text" name="manu_name" value= <?php echo $name;?>>
                 </div>
 
 
                 <div class="field">
                   <label>Manufacturer Code</label>
-                  <input placeholder="Code" type="text" name="manu_code">
+                  <input placeholder="Code" type="text" name="manu_code" value= <?php echo $code;?>>
                 </div>
 
                 <div class="field">
 
-                  <input type="submit" class="ui secondary button" value="ADD">
+                  <input type="submit" class="ui secondary button" value="UPDATE">
                   
                 </div> 
 
-
               </form>
-
-              <?php
-              if (isset($_REQUEST['manu_id'])) {
-                $no=$_REQUEST['manu_id'];
-                $code=$_REQUEST['manu_code'];
-                $name=$_REQUEST['manu_name'];
-                include_once("pages/manufacturer.php");
-                $obj=new manufacturer();
-
-                $obj->add_manufacturer($no,$name,$code);
-
-              }
-              ?>
             </body>
             </html>
 

@@ -2,11 +2,11 @@
 		
 	include_once("manufacturer.php");
     $obj=new manufacturer();
-	$no=$_REQUEST['man_no'];
-	$name=$_REQUEST['man_name'];
-	$code=$_REQUEST['man_code'];
+	$no=$_REQUEST['manu_id'];
+	$name=$_REQUEST['manu_name'];
+	$code=$_REQUEST['manu_code'];
 	$obj->update_manufacturer($no,$name,$code);
 
-	header("location:view_manufacturer.php");
+	header("location:../view_manufacturer.php");
 	
 ?>

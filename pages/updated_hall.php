@@ -6,6 +6,6 @@
     $name=$_REQUEST['hall_name'];
 	$obj->updateLecHall($no,$name);
 
-	header("location:view_hall.php");
+	header("location:../viewLectureHall.php");
 	
 ?>

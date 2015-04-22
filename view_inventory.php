@@ -1,12 +1,12 @@
-<?php
-require("pages/check.php");
-?>
-<?php
+ <?php
+ require("pages/check.php");
+ ?>
+ <?php
 
-?>
-<html>
-<head>
-  <title>Home</title>
+ ?>
+ <html>
+ <head>
+  <title>View Inventory</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/styles.css">
   <!--link rel="stylesheet" href="css/style_nav.css"-->
@@ -39,9 +39,24 @@ require("pages/check.php");
 
       </script>
 
-      <style type="text/css">
+  <style type="text/css">
+  #php_button{
+    width: 3em;
+    height: 1em;
+    /*background-color: #EFDBCE;*/
+    background-color: grey;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: px;
+    border-radius:4px;
+    color: #FFF;
+    font-family: 'Oswald';
+    font-size: 18px;
+    text-decoration: none;
+    cursor: pointer;
+    border:none;  
+  }
 
-      </style>
+</style>
 
     </head>
 
@@ -50,16 +65,18 @@ require("pages/check.php");
       <div id= "topHeader">
         <img src="images/logo.jpg" style= "padding:10px; float:left; position:absolute">
         <div id="ashesi"><h1>Ashesi University Inventory Management Systems</h1></div>
-        <div id="logout">
+      <div id="logout">
             <a href="pages/logout.php"><button id= "lbtn" >LOGOUT</button></a>
           </div>
       </div>
 
       <div id="topBar" class="ui small icon input" style="width: 1028px">
        <div style="padding-left:25px; padding-top:20px" class="ui huge breadcrumb">
-         
+         <a class="section">Home</a>
          <i class="right chevron icon divider"></i>
-         <div class="active section">Home</div>
+         <a class="section">Inventory</a>
+         <i class="right chevron icon divider"></i>
+         <div class="active section">View</div>
        </div>
        <input style="width:300px; float:right" type="text" placeholder="Search inventory...">
        <i class="search icon"></i>
@@ -96,7 +113,7 @@ require("pages/check.php");
   </div>
 </div>
 <div id="infoBar">
-  <h2 class="ui dividing header"> Inventory Information </h2>
+  <h2 class="ui dividing header"> Inventory Details </h2>
 
   <?php
   
@@ -109,7 +126,7 @@ require("pages/check.php");
   $count=0;
   echo "<tr style='background-color:grey;color:white; text-align:center'>
   <td>Item number</td><td>barcode</td><td>name</td><td>manufacturer</td><td> Price</td>
-  <td>date bought</td><td>repair date</td><td>condition</td><td>location</td><td>department</td></tr>";
+  <td>date bought</td><td>repair date</td><td>condition</td><td>location</td><td>department</td><td>Edit</td><td>Delete</td></tr>";
   while ($row= $obj->fetch()) {
     if($count%2==0){
       $style="style='background-color: #C2FFFF'"; 
@@ -118,6 +135,9 @@ require("pages/check.php");
       $style="";
     }
     $count+=1;
+    $buttonE = "<input type='button' id='php_button' value='Edit'>";
+    $buttonD = "<input type='button' id='php_button' value='Delete'>";
+    
     echo "<tr $style>";
     echo "<td>{$row["item_number"]}</td>";
     echo "<td>{$row["barcode_number"]}</td>";
@@ -129,10 +149,12 @@ require("pages/check.php");
     echo "<td>{$row["conditions"]}</td>";
     echo "<td>{$row["location"]}</td>";
     echo "<td>{$row["department"]}</td>";
+    echo "<td><a href='update_inventory.php?id={$row["item_number"]}' style='text-decoration: none;' > $buttonE</a> </td>";
+    echo "<td><a href='pages/delete.php?id={$row["item_number"]}' style='text-decoration: none;' > $buttonD</a> </td>";
+    
     echo"</tr>";
   }
   echo "</table></br></br>";
-  echo "<a href='index.html'><h2>Home</h2></a>;";
   ?>
 </div>
 </div>

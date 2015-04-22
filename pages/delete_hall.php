@@ -8,7 +8,7 @@ if (isset($_REQUEST['id'])) {
 	$obj=new lectureHalls();
 
 	$obj->deleteLecHall($no);
-	header("location:view_hall.php");
+	header("location:../viewLectureHall.php");
 	
 }
 ?>

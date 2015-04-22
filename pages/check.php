@@ -8,7 +8,7 @@ header("location:pages/login.php");
 }
 else{
 
-echo "welcome ".$user;  
+// echo "welcome ".$user;  
 }
 
 ?>
