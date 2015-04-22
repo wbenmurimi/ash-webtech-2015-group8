@@ -129,11 +129,11 @@ $(document).ready(function() {
     <h2 class="ui dividing header"> Inventory Information Form </h2>
     <div class="field"> 
       <label> Item Number </label> <input style="width:100%; float:left" 
-      type="text" name="item-code" placeholder="Enter item code here"value= <?php echo $item_no;?>>
+      type="text" name="item-code" placeholder="Enter item code here"value= "<?php echo htmlspecialchars($item_no);?>"/>
     </div>
     <div class="field"> 
       <label> Barcode Number </label> <input style="width:100%; float:left"
-       type="text" name="bar-code" placeholder="Enter barcode here"value= <?php echo $barcode;?>>
+       type="text" name="bar-code" placeholder="Enter barcode here"value= "<?php echo htmlspecialchars($barcode);?>"/>
     </div>
     
     <div class="two fields">
@@ -141,30 +141,30 @@ $(document).ready(function() {
       <div class="field">
         <label> Date Bought </label>
         <input style="width:100%" 
-        type="text" name="date-bought" placeholder="Enter date bought Here"value=<?php echo $date_boughtt;?>>
+        type="text" name="date-bought" placeholder="Enter date bought Here"value="<?php echo htmlspecialchars($date_boughtt);?>"/>
       </div>
       <div class="field"> 
         <label> Last Repair Date </label>
         <input  style="width:100%; float:left" type="text" 
-        name="repair-date" placeholder="Enter repair date here"value=<?php echo $repair_date;?>>
+        name="repair-date" placeholder="Enter repair date here"value="<?php echo htmlspecialchars($repair_date);?>"/>
     </div>
     </div>
    <div class="two fields">
     <div class="field"> 
         <label>Price</label>
         <input style="width:100%" float="left" type="text" 
-        name="price" placeholder="Enter price here"value= <?php echo $price;?>>
+        name="price" placeholder="Enter price here"value= "<?php echo htmlspecialchars($price);?>"/>
       </div>
     <div class="field">
       <label> Location </label>
       <input style="width:100%" type="text" 
-      name="location" placeholder="Enter location here"value=<?php echo $location;?>>
+      name="location" placeholder="Enter location here"value="<?php echo htmlspecialchars($location);?>"/>
     </div>
   </div>
   <div class="two fields">
     <div class="field"> 
       <label> Item Name </label>
-      <input style="width:100%; float:left"type="text" name="item-nm" placeholder="Enter item name here"value=<?php echo $name;?>>
+      <input style="width:100%; float:left"type="text" name="item-nm" placeholder="Enter item name here"value="<?php echo htmlspecialchars($name);?>"/>
     </div>
     <div class="field"> 
         <label> Manufacturer Name </label>
@@ -184,12 +184,12 @@ $(document).ready(function() {
       <select name="department"style="width:100%; float:left" >
         <option><?php echo $department;?></option>
         <option  value=""> --Department-- </option>
-        <option value="1">CS</option>
-        <option value="2">MIS</option>
-        <option value="3">BA</option>
-        <option value="4">EEE</option>
-        <option value="4">ME</option>
-        <option value="4">CE</option>
+        <option value="Computer Science">Computer Science</option>
+        <option value="Management Info Systems">Management Info Systems</option>
+        <option value="Business Administration">Business Administration</option>
+        <option value="Electrical Engineering">Electrical Engineering</option>
+        <option value="Mechanical Engineering">Mechanical Engineering</option>
+        <option value="Computer Engineering">Computer Engineering</option>
       </select>
     </div> 
     <div class="field">
@@ -197,10 +197,10 @@ $(document).ready(function() {
       <select name="condition"style="width:100%; float:left" >
          <option><?php echo $condiction;?></option>
         <option value=""> --Condition-- </option>
-        <option value="excellent">Excellent</option>
-        <option value="good">Good</option>
-        <option value="fair">Fair</option>
-        <option value="poor">Poor</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Fair">Fair</option>
+        <option value="Poor">Poor</option>
       </select>
     </div> 
   </div>               

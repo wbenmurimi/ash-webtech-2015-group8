@@ -112,11 +112,11 @@ require("pages/check.php");
  
       <div class="field">
         <label> Date Bought </label>
-        <input style="width:100%" type="text" name="date-bought" placeholder="Enter date bought Here">
+        <input style="width:100%" type="text" name="date-bought" placeholder="Enter date eg: 2014-02-12">
       </div>
       <div class="field"> 
         <label> Last Repair Date </label>
-        <input  style="width:100%; float:left" type="text" name="repair-date" placeholder="Enter repair date here">
+        <input  style="width:100%; float:left" type="text" name="repair-date" placeholder="Enter date eg: 2014-02-12">
     </div>
     </div>
    <div class="two fields">
@@ -150,22 +150,22 @@ require("pages/check.php");
       <label> Department </label>
       <select name="department"style="width:100%; float:left" >
         <option  value=""> --Department-- </option>
-        <option value="1">CS</option>
-        <option value="2">MIS</option>
-        <option value="3">BA</option>
-        <option value="4">EEE</option>
-        <option value="4">ME</option>
-        <option value="4">CE</option>
+        <option value="Computer Science">Computer Science</option>
+        <option value="Management Info Systems">Management Info Systems</option>
+        <option value="Business Administration">Business Administration</option>
+        <option value="Electrical Engineering">Electrical Engineering</option>
+        <option value="Mechanical Engineering">Mechanical Engineering</option>
+        <option value="Computer Engineering">Computer Engineering</option>
       </select>
     </div> 
     <div class="field">
       <label> Condition </label>
       <select name="condition"style="width:100%; float:left" >
         <option value=""> --Condition-- </option>
-        <option value="excellent">Excellent</option>
-        <option value="good">Good</option>
-        <option value="fair">Fair</option>
-        <option value="poor">Poor</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Fair">Fair</option>
+        <option value="Poor">Poor</option>
       </select>
     </div> 
   </div>               

@@ -27,8 +27,8 @@ Class items extends adb{
 		$name=$_REQUEST['item-nm'];
 		$manufacturer=$_REQUEST['manu-nm'];
 		$price=$_REQUEST['price'];
-		$date_bought=$_REQUEST['date-bought'];
-		$repair_date=$_REQUEST['repair-date'];
+		$date_bought= date('Y-m-d', strtotime($_REQUEST['date-bought']));
+		$repair_date= date('Y-m-d', strtotime($_REQUEST['repair-date']));
 		$condition=$_REQUEST['condition'];
 		$location=$_REQUEST['location'];
 		$department=$_REQUEST['department'];
@@ -60,6 +60,14 @@ Class items extends adb{
 		$querry="SELECT * FROM items WHERE item_number=$no";
 		return $this->query($querry);
 	}
+	function search_all_inventory($txtSearch){
+		
+		$querry="SELECT * from items where item_number like '%$txtSearch%' or manufacturer like '%$txtSearch%'
+			or conditions like '%$txtSearch%' or location like '%$txtSearch%' or department like '%$txtSearch%'
+	 		or item_name like '%$txtSearch%' or price like '%$txtSearch%'";
+	
+		return $this->query($querry);
+	}
 	/*
 	deletes item from the database
 	*/
@@ -74,16 +82,17 @@ Class items extends adb{
 	updates the items in the database
 	*/
 	function update_item(){;
-		$item_no=$_REQUEST['item_no'];
-		$barcode=$_REQUEST['barcode_no'];
-		$name=$_REQUEST['item_name'];
-		$manufacturer=$_REQUEST['manu'];
+		
+		$item_no=$_REQUEST['item-code'];
+		$barcode=$_REQUEST['bar-code'];
+		$name=$_REQUEST['item-nm'];
+		$manufacturer=$_REQUEST['manu-nm'];
 		$price=$_REQUEST['price'];
-		$date_bought=$_REQUEST['date_b'];
-		$repair_date=$_REQUEST['repair_d'];
-		$condition=$_REQUEST['condiction'];
+		$date_bought= date('Y-m-d', strtotime($_REQUEST['date-bought']));
+		$repair_date= date('Y-m-d', strtotime($_REQUEST['repair-date']));
+		$condition=$_REQUEST['condition'];
 		$location=$_REQUEST['location'];
-		$department=$_REQUEST['dpt'];
+		$department=$_REQUEST['department'];
 
 		$querry="UPDATE items 
 		 		SET barcode_number='$barcode', item_name='$name', manufacturer='$manufacturer'

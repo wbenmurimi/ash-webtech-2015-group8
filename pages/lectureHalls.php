@@ -35,9 +35,16 @@
 	}
 	
 	function view_one_hall($no){
-			$querry="SELECT * FROM lecture_halls WHERE hall_number=$no";
+			$querry="SELECT * FROM lecture_halls WHERE hall_number='$no'";
 			return $this->query($querry);
 		}
+
+	function search_lecture_halls($txtSearch){
+		
+		$querry="SELECT * from lecture_halls where hall_number like '%$txtSearch%' or hall_name like '%$txtSearch%'";
+	
+		return $this->query($querry);
+	}
 }
 	
 	?>

@@ -32,6 +32,13 @@ class manufacturer extends adb {
 	$str_query = "SELECT * FROM manufacturer WHERE manufacturer_id='$id'";
 	return $this->query($str_query);
 	}
+	function search_all_manufacturer($txtSearch){
+		
+		$querry="SELECT * from manufacturer where manufacturer_id like '%$txtSearch%' or manufacturer_name like '%$txtSearch%'
+			or code_no like '%$txtSearch%'";
+	
+		return $this->query($querry);
+	}
 	}
 
 ?>	

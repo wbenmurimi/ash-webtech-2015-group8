@@ -193,18 +193,18 @@
 
                 <div class="field">
                   <label>Manufacturer ID</label>
-                  <input placeholder="ID" type="text" name="manu_id" value= <?php echo $man_no;?>>
+                  <input placeholder="ID" type="text" name="manu_id" value= "<?php echo htmlspecialchars($man_no);?>"/>
                 </div>
 
                 <div class="field">
                   <label> Name</label>
-                  <input placeholder="Name" type="text" name="manu_name" value= <?php echo $name;?>>
+                  <input placeholder="Name" type="text" name="manu_name" value= "<?php echo htmlspecialchars($name);?>"/>
                 </div>
 
 
                 <div class="field">
                   <label>Manufacturer Code</label>
-                  <input placeholder="Code" type="text" name="manu_code" value= <?php echo $code;?>>
+                  <input placeholder="Code" type="text" name="manu_code" value= "<?php echo htmlspecialchars($code);?>"/>
                 </div>
 
                 <div class="field">

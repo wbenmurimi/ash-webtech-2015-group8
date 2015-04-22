@@ -30,7 +30,6 @@
         
       }
       function getManufacturers(){
-        alert("clicked");
         var myUrl= "control.php?cmd=1";//url
         result=sendRequest(myUrl);//sending the requert
 
@@ -101,23 +100,23 @@
       if (str.length <= 0) {
         obj.style.backgroundColor("red");
         return false;
+}
+        // ;
+        else{
+          obj.style.backgroundColor("green");
+          return false;
+        }
+        // ;
+
       }
-                    // ;
-                    else{
-                      obj.style.backgroundColor("green");
-                      return false;
-                    }
-                    // ;
 
-                  }
+      </script>
 
-                  </script>
+      <style type="text/css">
 
-                  <style type="text/css">
+      </style>
 
-                  </style>
-
-                </head>
+    </head>
 
                 <body style="background-color: #771212" >
                  <div id="mainContainer">

@@ -177,11 +177,12 @@ return false;
           $no=$_REQUEST['id'];
           include_once("pages/lectureHalls.php");
           $obj=new lectureHalls();
-
+echo "$no";
           $obj->view_one_hall($no);
 
-      while ($row= $obj->fetch()) {
+      while ($row=$obj->fetch()) {
         $hall_no=$row['hall_number'];
+        echo "$hall_no";
         $name=$row['hall_name'];
         
       }
@@ -191,12 +192,12 @@ return false;
 
     <div class="field">
       <label>Hall Number</label>
-      <input placeholder="Enter Hall Number" type="text" name="hall_no" value= <?php echo $hall_no;?>>
+      <input placeholder="Enter Hall Number" type="text" name="hall_no" value="<?php echo htmlspecialchars($hall_no);?>"/>
     </div>
 
     <div class="field">
       <label> Hall Name</label>
-      <input placeholder=" Enter Hall Name" type="text" name="hall_name" value= <?php echo $name;?>>
+      <input placeholder=" Enter Hall Name" type="text" name="hall_name" value="<?php echo htmlspecialchars($name);?>"/>
     </div>
 
     <div class="field">

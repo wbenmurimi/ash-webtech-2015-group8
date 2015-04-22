@@ -4,5 +4,5 @@
 	$obj= new items();
 	$obj->update_item();
 
-	header("location:view_inventory.php");
+	header("location:../view_inventory.php");
 ?>

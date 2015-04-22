@@ -20,22 +20,73 @@
   <script src="jquery-2.1.3.js"></script>
   <script>
 
-
-  function validate() {
-    var obj = document.getElementById("x");
-    var str = obj.value;
-    if (str.length <= 0) {
-      obj.style.backgroundColor("red");
-      return false;
-    }
-        // ;
-        else{
-          obj.style.backgroundColor("green");
-          return false;
-        }
-        // ;
-
+function sendRequest(u){
+        // Send request to server
+        //u a url as a string
+        //async is type of request
+        var obj=$.ajax({url:u,async:false});
+        //Convert the JSON string to object
+        var result=$.parseJSON(obj.responseText);
+        return result;  //return object
+        
       }
+  
+function searchInventory(){
+      
+  var txtSearch=document.getElementById("searchInput").value;
+  var myUrl= "control.php?cmd=3&id="+txtSearch;//url
+  result=sendRequest(myUrl);//sending the requert
+
+  if(result.result==0){//if there are no products with the specified manufacturer id
+    $("#divStatus").text(result.message);
+    return;
+  }
+  else if(result.result==1){
+
+  itemsTable=document.getElementById("itemsTable");
+  tableContent=document.getElementById("tableContent");
+
+  rowNum=itemsTable.rows.length;
+  for(i=rowNum;i>1;i--){
+    itemsTable.deleteRow(i-1);
+  }
+                
+  for (i = 0; i < result.item.length; i++){ 
+
+      rowNum=itemsTable.rows.length;
+    var row=itemsTable.insertRow(rowNum);
+
+    var itemId=row.insertCell(0);
+    var barcodeNumber=row.insertCell(1);
+    var itemName=row.insertCell(2);
+    var manufacturer=row.insertCell(3);
+    var price=row.insertCell(4);
+    var date_bought=row.insertCell(5);
+    var last_repair_date=row.insertCell(6);
+    var conditions=row.insertCell(7);
+    var location=row.insertCell(8);
+    var department=row.insertCell(9);
+
+    row.id="row"+i;
+    row.name="row"+i;
+    if(i%2==0){
+      $("#row"+i).css("backgroundColor","#8AD9FF");
+
+    }
+    itemId.innerHTML=result.item[i].item_number;
+    barcodeNumber.innerHTML=result.item[i].barcode_number;
+    itemName.innerHTML=result.item[i].item_name;
+    manufacturer.innerHTML=result.item[i].manufacturer;
+    price.innerHTML=result.item[i].price;
+    date_bought.innerHTML=result.item[i].date_bought;
+    last_repair_date.innerHTML=result.item[i].last_repair_date;
+    conditions.innerHTML=result.item[i].conditions;
+    location.innerHTML=result.item[i].location;
+    department.innerHTML=result.item[i].department;
+    }
+}
+
+}
 
       </script>
 
@@ -55,6 +106,28 @@
     cursor: pointer;
     border:none;  
   }
+    #searchBtn{
+        width: 3em;
+        height: 1.8em;
+        /*background-color: #EFDBCE;*/
+        background-color: #8D1919;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius:6px;
+        color: #FFF;
+        font-family: 'Oswald';
+        font-size: 18px;
+        text-decoration: none;
+        cursor: pointer;
+        border:none;
+        margin-right: 30px;
+        margin-top: 8px;
+        
+      }
+      #searchInput{
+        margin-top: 8px;
+        margin-right: 10px;
+      }
 
 </style>
 
@@ -78,8 +151,11 @@
          <i class="right chevron icon divider"></i>
          <div class="active section">View</div>
        </div>
-       <input style="width:300px; float:right" type="text" placeholder="Search inventory...">
-       <i class="search icon"></i>
+       <button id="searchBtn" style="width:60px;float:right "name="searchBtn" onClick="searchInventory()">Search</button>
+       
+         <input id="searchInput" style="width:300px;float:right " type="text" placeholder="Search inventory...">
+         <!-- <i class="search icon"></i> -->
+         
      </div>
 
      <div id="statusBar"></div>
@@ -121,12 +197,12 @@
   $obj= new items();
   $obj->view_items();
 
-  echo '<table border=1 align= "center" width="100%">';
+  echo '<table id="itemsTable"border=1 align= "center" width="100%">';
   $style="";
   $count=0;
   echo "<tr style='background-color:grey;color:white; text-align:center'>
   <td>Item number</td><td>barcode</td><td>name</td><td>manufacturer</td><td> Price</td>
-  <td>date bought</td><td>repair date</td><td>condition</td><td>location</td><td>department</td><td>Edit</td><td>Delete</td></tr>";
+  <td>date bought</td><td>repair date</td><td>condition</td><td>location</td><td>department</td><td></td><td></td></tr>";
   while ($row= $obj->fetch()) {
     if($count%2==0){
       $style="style='background-color: #C2FFFF'"; 

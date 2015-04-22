@@ -13,15 +13,15 @@ switch($cmd)
 		getItems();
 		break;
 	case 3:
-		//edit
+		search_inventory();
 		break;
 	case 4:
-		search_product();
+		search_manufacturer();
 		break;
 	case 5:
-	getManufacturerProducts();
-	break;
-	
+		search_halls();
+		break;
+		
 	default:
 		echo '{"result":0,message:"unknown command"}';
 		break;
@@ -77,38 +77,23 @@ function getItems(){
 	echo "]}";
 
 }
+function search_inventory(){
 
+	include_once("pages/item.php");
+    $obj=new items();
+    $id=$_REQUEST['id'];
+	$obj->search_all_inventory($id);
 
-
-function delete_product(){
-	include("products.php");
-	$obj=new products();
-	$id=$_REQUEST['id'];
-	if($obj->delete($id)){
-		echo '{"result":1,"message": "deleted"}';
-	}else{
-		echo '{"result":0,"message": "product not removed."}';
-	}
-	break;
-}	
-
-function search_product(){
-	if(!isset($_REQUEST['st'])){
+	if(!$obj->search_all_inventory($id)){
 		//return error
-		echo '{"result":0,"message": "search did not work."}';
-	}
-	$search_text=$_REQUEST['st'];
-	include("products.php");
-	$obj=new products();
-	if(!$obj->search_by_name($search_text)){
-		//return error
-		echo '{"result":0,"message": "search did not work."}';
+		echo '{"result":0,"message": "No match results."}';
 		return;
 	}
+
 	//at this point the search has been successful. 
 	//generate the JSON message to echo to the browser
 	$row=$obj->fetch();
-	echo '{"result":1,"products":[';	//start of json object
+	echo '{"result":1,"item":[';	//start of json object
 	while($row){
 		echo json_encode($row);			//convert the result array to json object
 		$row=$obj->fetch();
@@ -116,6 +101,66 @@ function search_product(){
 			echo ",";					//if there are more rows, add comma 
 		}
 	}
-	echo "]}";							//end of json array and object
+	echo "]}";
+
 }
+
+function search_manufacturer(){
+
+	include_once("pages/manufacturer.php");
+    $obj=new manufacturer();
+    $id=$_REQUEST['id'];
+	$obj->search_all_manufacturer($id);
+
+	if(!$obj->search_all_manufacturer($id)){
+		//return error
+		echo '{"result":0,"message": "No match results."}';
+		return;
+	}
+
+	//at this point the search has been successful. 
+	//generate the JSON message to echo to the browser
+	$row=$obj->fetch();
+	echo '{"result":1,"manufacturer":[';	//start of json object
+	while($row){
+		echo json_encode($row);			//convert the result array to json object
+		$row=$obj->fetch();
+		if($row){
+			echo ",";					//if there are more rows, add comma 
+		}
+	}
+	echo "]}";
+
+}
+
+function search_halls(){
+
+	include_once("pages/lectureHalls.php");
+    $obj=new lectureHalls();
+    $id=$_REQUEST['id'];
+	$obj->search_lecture_halls($id);
+
+	if(!$obj->search_lecture_halls($id)){
+		//return error
+		echo '{"result":0,"message": "No match results."}';
+		return;
+	}
+
+	//at this point the search has been successful. 
+	//generate the JSON message to echo to the browser
+	$row=$obj->fetch();
+	echo '{"result":1,"halls":[';	//start of json object
+	while($row){
+		echo json_encode($row);			//convert the result array to json object
+		$row=$obj->fetch();
+		if($row){
+			echo ",";					//if there are more rows, add comma 
+		}
+	}
+	echo "]}";
+
+}
+
+
+
 ?>

@@ -95,21 +95,49 @@ require("pages/check.php");
 
    }
 
-   function validate() {
-    var obj = document.getElementById("x");
-    var str = obj.value;
-    if (str.length <= 0) {
-      obj.style.backgroundColor("red");
-      return false;
-    }
-                  // ;
-                  else{
-                    obj.style.backgroundColor("green");
-                    return false;
-                  }
-                  // ;
+function searchManufacturer(){
+  var txtSearch=document.getElementById("searchInput").value;
+  var myUrl= "control.php?cmd=4&id="+txtSearch;//url
+  result=sendRequest(myUrl);//sending the requert
 
-                }
+  if(result.result==0){//if there are no products with the specified manufacturer id
+    $("#divStatus").text(result.message);
+    return;
+  }
+  else if(result.result==1){
+
+  itemsTable=document.getElementById("itemsTable");
+  tableContent=document.getElementById("tableContent");
+
+  rowNum=itemsTable.rows.length;
+  for(i=rowNum;i>1;i--){
+    itemsTable.deleteRow(i-1);
+  }
+                
+  for (i = 0; i < result.manufacturer.length; i++){ 
+
+      rowNum=itemsTable.rows.length;
+    var row=itemsTable.insertRow(rowNum);
+
+    var manuId=row.insertCell(0);
+    var manuName=row.insertCell(1);
+    var codeNo=row.insertCell(2);
+    
+
+    row.id="row"+i;
+    row.name="row"+i;
+    if(i%2==0){
+      $("#row"+i).css("backgroundColor","#8AD9FF");
+
+    }
+    manuId.innerHTML=result.manufacturer[i].manufacturer_id;
+    manuName.innerHTML=result.manufacturer[i].manufacturer_name;
+    codeNo.innerHTML=result.manufacturer[i].code_no;
+    
+    }
+}
+
+}
 
       </script>
 
@@ -129,6 +157,28 @@ require("pages/check.php");
     cursor: pointer;
     border:none;  
   }
+       #searchBtn{
+        width: 3em;
+        height: 1.8em;
+        /*background-color: #EFDBCE;*/
+        background-color: #8D1919;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius:6px;
+        color: #FFF;
+        font-family: 'Oswald';
+        font-size: 18px;
+        text-decoration: none;
+        cursor: pointer;
+        border:none;
+        margin-right: 30px;
+        margin-top: 8px;
+        
+      }
+      #searchInput{
+        margin-top: 8px;
+        margin-right: 10px;
+      }
 
 </style>
 
@@ -152,8 +202,10 @@ require("pages/check.php");
          <i class="right chevron icon divider"></i>
          <div class="active section">View</div>
        </div>
-       <input style="width:300px; float:right" type="text" placeholder="Search inventory...">
-       <i class="search icon"></i>
+       <button id="searchBtn" style="width:60px;float:right "name="searchBtn" onClick="searchManufacturer()">Search</button>
+       
+         <input id="searchInput" style="width:300px;float:right " type="text" placeholder="Search inventory...">
+         
      </div>
 
      <div id="statusBar"></div>
@@ -194,7 +246,7 @@ require("pages/check.php");
 
   $obj2->view_manufacturer();
 
-  echo '<table border=1 align= "center" width="100%">';
+  echo '<table border=1 id="itemsTable" align= "center" width="100%">';
   $style="";
   $count=0;
   echo "<tr style='background-color:grey;color:white; text-align:center height='15px'>

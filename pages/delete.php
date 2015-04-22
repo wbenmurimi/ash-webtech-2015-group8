@@ -6,6 +6,6 @@ if (isset($_REQUEST['id'])) {
 		$obj= new items();
 		$obj->delete_item();	
 
-		 header("location:page_3.php");
+		 header("location:../view_inventory.php");
 	}
 		?>
