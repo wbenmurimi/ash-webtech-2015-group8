@@ -1,0 +1,1 @@
+The application will be used to manage inventory for the new engineering block.
